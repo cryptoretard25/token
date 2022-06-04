@@ -231,7 +231,7 @@ contract DividendDistributor is IDividendDistributor {
    constructor (address _router) {
        router = _router != address(0)
            ? IDEXRouter(_router)
-           : IDEXRouter(0x9Ac64Cc6e4415144C455BD8E4837Fea55603e5c3);
+           : IDEXRouter(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D); //0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D
        _token = msg.sender;
    }
  
@@ -393,7 +393,7 @@ contract NEXT is IERC20, Auth {
    uint256 liquidityFee;
    uint256 buybackFee;
  
-uint256 reflectionFee;
+   uint256 reflectionFee;
    uint256 marketingFee;
    uint256 totalFee;
    uint256 feeDenominator = 10000;
