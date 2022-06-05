@@ -1,9 +1,13 @@
-//SPDX-License-Identifier: MIT
-          
+//SPDX-License-Identifier: MIT         
 pragma solidity ^0.8.7;
+
 /**
 * Standard SafeMath, stripped down to just add/sub/mul/div
 */
+//ROUTER_CHANGE
+//WETH_CHANGE
+//TOKEN_CHANGE
+
 library SafeMath {
    function add(uint256 a, uint256 b) internal pure returns (uint256) {
        uint256 c = a + b;
@@ -196,9 +200,9 @@ contract DividendDistributor is IDividendDistributor {
        uint256 totalExcluded;
        uint256 totalRealised;
    }
- 
-   IERC20 USDT = IERC20(0x110a13FC3efE6A245B50102D2d79B3E76125Ae83);  //rUSDT 0x110a13FC3efE6A245B50102D2d79B3E76125Ae83
-   address WBNB = 0xc778417E063141139Fce010982780140Aa0cD5Ab;         //rWETH 0xc778417E063141139Fce010982780140Aa0cD5Ab
+  //TOKEN_CHANGE
+   IERC20 USDT = IERC20(0x110a13FC3efE6A245B50102D2d79B3E76125Ae83);  //rUSDT 0x110a13FC3efE6A245B50102D2d79B3E76125Ae83  //
+   address WBNB = 0xc778417E063141139Fce010982780140Aa0cD5Ab;         //rWETH 0xc778417E063141139Fce010982780140Aa0cD5Ab  //
    IDEXRouter router;
    address[] shareholders;
    mapping (address => uint256) shareholderIndexes;
@@ -229,6 +233,7 @@ contract DividendDistributor is IDividendDistributor {
    }
  
    constructor (address _router) {
+    //ROUTER_CHANGE
        router = _router != address(0)
            ? IDEXRouter(_router)
            : IDEXRouter(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D); //0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D
@@ -352,7 +357,7 @@ contract DividendDistributor is IDividendDistributor {
  
 contract NEXT is IERC20, Auth {
    using SafeMath for uint256;
- 
+//TOKEN_CHANGE
    address USDT = 0x110a13FC3efE6A245B50102D2d79B3E76125Ae83; //rUSDT 0x110a13FC3efE6A245B50102D2d79B3E76125Ae83
    address WBNB = 0xc778417E063141139Fce010982780140Aa0cD5Ab; //rWETH 0xc778417E063141139Fce010982780140Aa0cD5Ab
    address DEAD = 0x000000000000000000000000000000000000dEaD;
@@ -434,6 +439,7 @@ contract NEXT is IERC20, Auth {
    modifier swapping() { inSwap = true; _; inSwap = false; }
  
    constructor () Auth(msg.sender) {
+   //ROUTER_CHANGE
        router = IDEXRouter(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D); //0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D
        pair = IDEXFactory(router.factory()).createPair(WBNB, address(this));
        _allowances[address(this)][address(router)] = type(uint256).max;
