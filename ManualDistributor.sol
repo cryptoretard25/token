@@ -5,8 +5,8 @@ pragma solidity ^0.8.0;
 
 contract NewProxy {  
     //set payable variables 
-    address payable private _feeAddrWallet1;
-    address payable private _feeAddrWallet2;
+    address private _feeAddrWallet1;
+    address private _feeAddrWallet2;
     uint public balance;
 
     //assign
