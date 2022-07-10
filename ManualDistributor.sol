@@ -16,11 +16,12 @@ contract NewProxy {
   }
     //external function, updating contract balance
     receive() external payable {
-        balance = address(this).balance;
+        distribute()
         }
     
     //manual distributing func
-    function distribute() public{
+    function distribute() private {
+        balance = address(this).balance;
         _feeAddrWallet1.transfer(balance/2);
         _feeAddrWallet2.transfer(balance/2);
     }
