@@ -10,9 +10,9 @@ contract NewProxy {
     uint public balance;
 
     //assign
-    constructor(){
-        _feeAddrWallet1 = payable(0x000000000000000000000000000000000000dEaD);
-        _feeAddrWallet2 = payable(0x000000000000000000000000000000000000dEaD);
+    constructor(address feeAddrWallet1, address feeAddrWallet2){
+        _feeAddrWallet1 = payable(feeAddrWallet1);
+        _feeAddrWallet2 = payable(feeAddrWallet2);
   }
     //external function, updating contract balance
     receive() external payable {
